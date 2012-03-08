@@ -1,10 +1,12 @@
 <h1>Be more productive<br />with Toodledoodle</h1><br />
 
 <h2>Here are your lists:</h2>
-<ul>
+<table>
 	<% @user.lists.each do |entry| %>
-		<li><%= link_to entry.name, list_path(entry) %></li>
+		<tr>
+			<td><%= link_to entry.name, list_path(entry) %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>
 
 <%= link_to "Create a new list", new_list_path %>
