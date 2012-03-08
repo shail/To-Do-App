@@ -8,6 +8,7 @@ gem 'rails', '3.2.1'
 gem 'sqlite3'
 
 gem 'devise', '~> 2.0'
+gem 'twitter-bootstrap-rails'
 
 
 
