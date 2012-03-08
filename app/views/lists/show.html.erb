@@ -1,8 +1,9 @@
 <h2><%="The list \"#{@list.name}\" contains these tasks:" %></h2>
 <ul>
-<% @list.tasks.each do |task| %>
-	<li><%= "#{task.description} -- #{task.report_status}" %></li>
+<% @list.tasks.sort_by {|task| task.priority_number }.each do |task| %>
+	<li><%= "#{task.description} -- Priority: #{task.priority_number} -- #{task.report_status}" %></li>
 <% end %>
 </ul>
 
 <%= link_to "Add a task", new_task_path %>
+

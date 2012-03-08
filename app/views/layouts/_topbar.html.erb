@@ -6,12 +6,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">ToodleDoodle</a>
+			<%= link_to "ToodleDoodle", root_path, :class => "brand" %>
       <div class="container nav-collapse">
         <ul class="nav">
 						<% if current_user %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></li> 
-            <li><%= link_to "My Links", "#"  %></li> 
+            <li><%= link_to "My Tasks", root_path  %></li> 
+						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></li>
             <% else %>
 						<li><%= link_to "Sign In", new_user_session_path %></li>
 						<% end %>
