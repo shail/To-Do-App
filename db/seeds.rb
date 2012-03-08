@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-L1 = List.new(user_id: 1)
+U1 = User.find(1)
+
+L1 = List.new(user_id: U1.id, name: "Household")
 L1.save
 
 task1 = Task.new(description: "Feed the cat", completion_status: false,
