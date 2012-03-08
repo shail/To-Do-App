@@ -1,0 +1,6 @@
+<h2>Your list contains these tasks:</h2>
+<ul>
+<% @list.tasks.each do |task| %>
+	<li><%= task.description %></li>
+<% end %>
+</ul>
