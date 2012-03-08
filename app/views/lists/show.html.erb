@@ -1,8 +1,18 @@
 <h2><%="The list \"#{@list.name}\" contains these tasks:" %></h2>
-<ul>
-<% @list.tasks.sort_by {|task| task.priority_number }.each do |task| %>
-	<li><%= "#{task.description} -- Priority: #{task.priority_number} -- #{task.report_status}" %></li>
-<% end %>
-</ul>
 
+<table class="span6 table table-striped">
+	<tr>
+		<td>List</td>
+		<td>Priority</td>
+		<td>Completed?</td>
+	</tr>
+<% @list.tasks.sort_by {|task| task.priority_number }.each do |task| %>
+	<tr>
+		<td><%= task.description %></td>
+		<td><%= task.priority_number %></td>
+		<td><%= task.report_status %></td>
+	</tr>
+<% end %>
+</table>
 <%= link_to "Add a task", new_list_task_path(@list) %>
+
