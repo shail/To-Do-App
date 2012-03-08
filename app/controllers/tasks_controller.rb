@@ -1,14 +1,15 @@
 class TasksController < ApplicationController
   def new
-    @task = Task.new
+    @list = List.find(params[:list_id])
+    @task = Task.new#(list_id:@list.id)
   end
   
   def create
+    
     @task = Task.new(params[:task])
-    @task.list_id = current_user.id
     if @task.save
       flash[:success] = "New task added"
-      redirect_to root_path
+      redirect_to list_path(List.find(params[:list_id]))
     else
       flash[:error] = "Task creation failed."
       render 'new'

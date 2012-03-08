@@ -1,6 +1,7 @@
 Todo2::Application.routes.draw do
-  resources :lists
-  resources :tasks
+  resources :lists do
+    resources :tasks
+  end
 
   devise_for :users
   
