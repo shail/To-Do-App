@@ -2,15 +2,22 @@
 
 <table class="span6 table table-striped">
 	<tr>
-		<td>List</td>
+		<td>Task</td>
 		<td>Priority</td>
 		<td>Completed?</td>
+		<td>Finish?</td>
+		<td>Delete?</td>
+		
 	</tr>
 <% @list.tasks.sort_by {|task| task.priority_number }.each do |task| %>
 	<tr>
 		<td><%= task.description %></td>
 		<td><%= task.priority_number %></td>
 		<td><%= task.report_status %></td>
+		<td><%= link_to "Finish", list_task_path(@list, task), :method => :put, :class => "btn btn-warning" %></td>
+		<td><%= link_to "Delete", list_task_path(@list, task), :class => "btn btn-danger",
+				:confirm => "Are you sure? If you're done with the task," + 
+							"you should click 'finished', not delete this!", :method => :delete%>
 	</tr>
 <% end %>
 </table>
