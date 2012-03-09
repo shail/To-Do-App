@@ -16,6 +16,7 @@ class Task < ActiveRecord::Base
   end
   
 
+  #BUGBUG Illegal instruction error, server shuts down. Can't double task priority number that isn't the   last one
   
   # def priority_number_increment
   #   @all_tasks.each do |task| 
