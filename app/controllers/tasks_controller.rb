@@ -44,15 +44,7 @@ class TasksController < ApplicationController
   def update
     @list = List.find(params[:list_id])
     @task = @list.tasks.find_by_id(params[:id])
-    if params[:foo]
-      #how do we know if finish was clicked vs edit here?
-      if @task.completion_status == true
-        @task.completion_status = false
-      else
-        @task.completion_status = true
-      end
-    end
-    @task.save
+    @task.update_attributes(params[:task])
     redirect_to list_path(@list)
   end
   
