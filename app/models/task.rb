@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :list
   validates :list_id, :description, :presence => true
   validates :priority_number, :numericality => { :only_integer => true }
-  before_save :check_priority_number_uniqueness, :priority_number_increment
+  # before_save :check_priority_number_uniqueness, :priority_number_increment
   
   def report_status
     if completion_status == true

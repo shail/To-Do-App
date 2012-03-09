@@ -5,6 +5,7 @@
 		<td>Task</td>
 		<td>Priority</td>
 		<td>Completed?</td>
+		<td>Edit</td>
 		<td>Finish?</td>
 		<td>Delete?</td>
 	</tr>
@@ -13,7 +14,8 @@
 		<td><%= task.description %></td>
 		<td><%= task.priority_number %></td>
 		<td><%= task.report_status %></td>
-		<td><%= link_to "Finish", list_task_path(@list, task), :method => :put, :class => "btn btn-warning" %></td>
+		<td><%= link_to "Edit", edit_list_task_path(@list, task), :class => "btn btn-warning" %></td>
+		<td><%= link_to "Finish", toggle_completed_list_task_path(@list, task), :method => :put, :class => "btn btn-warning" %></td>
 		<td><%= link_to "Delete", list_task_path(@list, task), :class => "btn btn-danger",
 				:confirm => "Are you sure? If you're done with the task," + 
 							"you should click 'finished', not delete this!", :method => :delete%>
@@ -21,4 +23,3 @@
 <% end %>
 </table>
 <%= link_to "Add a task", new_list_task_path(@list) %>
-
