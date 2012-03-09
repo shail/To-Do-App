@@ -6,7 +6,16 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(params[:task])
+    list = List.find(params[:list_id])
+    
     @task.priority_number ||= 1
+    list.tasks.each do |task|
+      if task.priority_number >= @task.priority_number
+        task.priority_number += 1
+        task.save
+      end
+    end
+    
     if @task.save
       flash[:success] = "New task added"
       redirect_to list_path(List.find(params[:list_id]))
@@ -19,7 +28,16 @@ class TasksController < ApplicationController
   def destroy
     @list = List.find(params[:list_id])
     @task = @list.tasks.find_by_id(params[:id])
+    destroyed_priority_number = @task.priority_number ||= 1
     @task.destroy
+    
+   
+    @list.tasks.each do |task|
+      if task.priority_number >= destroyed_priority_number
+        task.priority_number -= 1
+        task.save
+      end
+    end
     redirect_to list_path(@list)
   end
   
