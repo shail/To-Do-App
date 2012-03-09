@@ -4,6 +4,9 @@
 
 	<%= f.label :priority_number %>
 	<%= f.text_field :priority_number %>
+	<%= f.label :priority_level %>
+	<%= f.select(:priority_level, options_for_select(%w(High Medium Low None))) %>
 	<%= f.hidden_field :list_id, :value => @list.id %>
-	<%= f.submit "Add task to list" %>
+	<br />
+  <%= f.submit "Add task to list" %>
 <% end %>

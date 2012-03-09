@@ -3,15 +3,15 @@
 <table class="span6 table table-striped">
 	<tr>
 		<td>Task</td>
-		<td>Priority</td>
+		<td>Priority Level</td>
 		<td>Completed?</td>
 		<td>Finish?</td>
 		<td>Delete?</td>
 	</tr>
-<% @list.priority_sort.each do |task| %>
+<% @list.priority_level_sort.each do |task| %>
 	<tr>
 		<td><%= task.description %></td>
-		<td><%= task.priority_number %></td>
+		<td><%= task.priority_level %></td>
 		<td><%= task.report_status %></td>
 		<td><%= link_to "Finish", list_task_path(@list, task), :method => :put, :class => "btn btn-warning" %></td>
 		<td><%= link_to "Delete", list_task_path(@list, task), :class => "btn btn-danger",
