@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
   validates :list_id, :description, :presence => true
   validates :priority_number, :numericality => { :only_integer => true }
   validates :priority_level, :presence => true
+  validates :due_date, :presence => true
   # before_save :check_priority_number_uniqueness, :priority_number_increment
  
   def report_status
@@ -33,5 +34,5 @@ class Task < ActiveRecord::Base
   #     end
   #   end
   # end
-  # 
+  
 end

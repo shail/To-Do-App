@@ -4,6 +4,7 @@
 	<tr>
 		<td>Task</td>
 		<td>Priority Level</td>
+		<td>Due Date</td>
 		<td>Completed?</td>
 		<td>Finish?</td>
 		<td>Delete?</td>
@@ -12,6 +13,7 @@
 	<tr>
 		<td><%= task.description %></td>
 		<td><%= task.priority_level %></td>
+		<td><%= task.due_date.to_formatted_s(:long) %></td>
 		<td><%= task.report_status %></td>
 		<td><%= link_to "Finish", list_task_path(@list, task), :method => :put, :class => "btn btn-warning" %></td>
 		<td><%= link_to "Delete", list_task_path(@list, task), :class => "btn btn-danger",

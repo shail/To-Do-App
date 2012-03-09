@@ -6,6 +6,8 @@
 	<%= f.text_field :priority_number %>
 	<%= f.label :priority_level %>
 	<%= f.select(:priority_level, options_for_select(%w(High Medium Low None))) %>
+	<%= f.label :due_date %>
+	<%= f.date_select(:due_date, :order => [:month, :day, :year]) %>
 	<%= f.hidden_field :list_id, :value => @list.id %>
 	<br />
   <%= f.submit "Add task to list" %>
