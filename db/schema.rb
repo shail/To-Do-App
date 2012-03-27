@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309003553) do
+ActiveRecord::Schema.define(:version => 20120327121030) do
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20120309003553) do
     t.boolean  "completion_status"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "priority_number"
     t.string   "priority_level"
     t.date     "due_date"
   end

@@ -1,20 +1,14 @@
 class TasksController < ApplicationController
+
+  before_filter :correct_list_and_task, only: [:update, :destroy, :edit, :toggle_completed]
+
   def new
-    @list = List.find(params[:list_id])
+    @list = current_user.lists.find(params[:list_id])
     @task = Task.new#(list_id:@list.id)
   end
   
   def create
     @task = Task.new(params[:task])
-    list = List.find(params[:list_id])
-    
-    @task.priority_number ||= 1
-    list.tasks.each do |task|
-      if task.priority_number >= @task.priority_number
-        task.priority_number += 1
-        task.save
-      end
-    end
     
     if @task.save
       flash[:success] = "New task added"
@@ -26,36 +20,19 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @list = List.find(params[:list_id])
-    @task = @list.tasks.find_by_id(params[:id])
-    destroyed_priority_number = @task.priority_number ||= 1
     @task.destroy
-    
-   
-    @list.tasks.each do |task|
-      if task.priority_number >= destroyed_priority_number
-        task.priority_number -= 1
-        task.save
-      end
-    end
     redirect_to list_path(@list)
   end
   
   def update
-    @list = List.find(params[:list_id])
-    @task = @list.tasks.find_by_id(params[:id])
     @task.update_attributes(params[:task])
     redirect_to list_path(@list)
   end
   
   def edit
-    @list = List.find(params[:list_id])
-    @task = @list.tasks.find_by_id(params[:id])
   end
   
   def toggle_completed
-    @list = List.find(params[:list_id])
-    @task = @list.tasks.find_by_id(params[:id])
     if @task.completion_status == true
       @task.completion_status = false
     else
@@ -64,5 +41,13 @@ class TasksController < ApplicationController
     @task.save
     redirect_to list_path(@list)
   end
+
+  private
+
+    def correct_list_and_task
+      @list = current_user.lists.find(params[:list_id])
+      @task = @list.tasks.find_by_id(params[:id])
+    end
+
 
 end

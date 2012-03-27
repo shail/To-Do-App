@@ -10,10 +10,6 @@ class List < ActiveRecord::Base
       "None" => 3
     }
   
-  def priority_sort
-    self.tasks.sort_by {|task| task.priority_number} 
-  end
-  
   def priority_level_sort
     self.tasks.sort_by {|task| PRIORITIES[task.priority_level]}
   end
