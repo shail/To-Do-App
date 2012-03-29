@@ -1,1 +1,1 @@
-A simple todo application in Rails.
+A learning experience through building a small To-Do app

@@ -1,6 +1,6 @@
 <h2><%="The list \"#{@list.name}\" contains these tasks:" %></h2>
 
-<table class="span6 table table-striped">
+<table class="table table-striped">
 	<tr>
 		<td>Task</td>
 		<td>Priority Level</td>
@@ -24,4 +24,4 @@
 	</tr>
 <% end %>
 </table>
-<%= link_to "Add a task", new_list_task_path(@list) %>
+<%= link_to "Add a task", new_list_task_path(@list), :class => "btn btn-primary"%>

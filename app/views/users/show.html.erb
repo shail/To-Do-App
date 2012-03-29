@@ -1,7 +1,9 @@
-<h1>Be more productive<br />with Toodledoodle</h1><br />
+<h2 class="big">Your Lists</h2>
 
-<h2>Here are your lists:</h2>
-<table>
+<table class="table">
+	<tr>
+		<td>List</td>
+	</tr>
 	<% @user.lists.each do |entry| %>
 		<tr>
 			<td><%= link_to entry.name, list_path(entry) %></td>
@@ -9,4 +11,4 @@
 	<% end %>
 </table>
 
-<%= link_to "Create a new list", new_list_path %>
+<%= link_to "Create a new list", new_list_path, :class => "btn btn-primary move" %>
